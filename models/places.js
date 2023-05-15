@@ -1,17 +1,3 @@
-// module.exports = [{
-//     name: 'H-Thai-ML',
-//     city: 'Seattle',
-//     state: 'WA',
-//     cuisines: 'Thai, Pan-Asian',
-//     pic: '/images/pad-thai.jpg'
-// }, {
-//     name: 'Coding Cat Cafe',
-//     city: 'Phoenix',
-//     state: 'AZ',
-//     cuisines: 'Coffee, Bakery',
-//     pic: '/images/cat-coffee.jpg'
-// }]
-
 const mongoose = require('mongoose')
 
 const placeSchema = new mongoose.Schema ({
@@ -24,7 +10,8 @@ const placeSchema = new mongoose.Schema ({
         type: Number,
         min: [1673, 'Surely not that old?!'],
         max: [new Date().getFullYear(), 'Hey, this year is in the future!']
-    }
+    },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 })
 
 placeSchema.methods.showEstablished = function() {
